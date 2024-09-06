@@ -20,8 +20,8 @@ jobs:
       - name: Print Flutter version
         run: flutter --version
 
-#      - name: Install dependencies
-#        run: flutter pub get
+      - name: Install dependencies
+        run: flutter pub get
 #
 #      - name: Build app
 #        run: flutter build web
