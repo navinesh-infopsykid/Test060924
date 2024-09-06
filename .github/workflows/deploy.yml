@@ -15,18 +15,15 @@ jobs:
         uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.0.0'
-      - name: Debug Flutter Environment
-        run: |
-          flutter --version
-          flutter doctor -v
       - name: Install dependencies
-        run: flutter pub get
-      - name: Build app
-        run: flutter build web
-      - name: Deploy to S3
-        run: |
-          aws s3 sync build/web s3://$S3_BUCKET_NAME --region $AWS_REGION
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_REGION: ${{ secrets.AWS_REGION }}
+      #  run: flutter pub get
+#      - name: Build app
+#        run: flutter build web
+#      - name: Deploy to S3
+#        uses: jameswomack/s3-upload-action@v1
+#        with:
+#          args: --bucket ${{ secrets.S3_BUCKET_NAME }} --source build/web
+#        env:
+#          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+#          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+#          AWS_REGION: ${{ secrets.AWS_REGION }}
