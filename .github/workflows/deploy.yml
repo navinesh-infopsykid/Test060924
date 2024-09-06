@@ -11,19 +11,19 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      # - name: Set up Flutter
-      #   uses: subosito/flutter-action@v2
-      #   with:
-      #     flutter-version: '3.0.0'
-      # - name: Install dependencies
-      #   run: flutter pub get
-      # - name: Build app
-      #   run: flutter build web
-      # - name: Deploy to S3
-      #   uses: jameswomack/s3-upload-action@v1
-      #   with:
-      #     args: --bucket ${{ secrets.S3_BUCKET_NAME }} --source build/web
-      #   env:
-      #     AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      #     AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      #     AWS_REGION: ${{ secrets.AWS_REGION }}
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.0.0'
+      - name: Install dependencies
+        run: flutter pub get
+      - name: Build app
+        run: flutter build web
+#      - name: Deploy to S3
+#        uses: jameswomack/s3-upload-action@v1
+#        with:
+#          args: --bucket ${{ secrets.S3_BUCKET_NAME }} --source build/web
+#        env:
+#          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+#          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+#          AWS_REGION: ${{ secrets.AWS_REGION }}
