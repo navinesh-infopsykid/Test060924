@@ -19,10 +19,11 @@ jobs:
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.24.2'  # Ensure this version is used
+          flutter-version: '3.24.2'
 
       - name: Install dependencies
         run: flutter pub get
+
       - name: Build app
         run: flutter build web
 
@@ -38,7 +39,7 @@ jobs:
 
       - name: Deploy to S3
         run: |
-          aws s3 sync build/web s3://$S3_BUCKET_NAME --region $AWS_REGION --delete
+          aws s3 sync build/web s3://$S3_BUCKET_NAME --region $AWS_REGION --delete --acl public-read
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -52,4 +53,3 @@ jobs:
         run: |
           flutter --version
           dart --version
-        
