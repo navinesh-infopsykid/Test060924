@@ -21,31 +21,31 @@ jobs:
       - name: Print Flutter version
         run: flutter --version
 
-      - name: Clean Flutter cache
-        run: flutter clean
+#      - name: Clean Flutter cache
+#        run: flutter clean
 
-      - name: Install dependencies
-        run: flutter pub get
+#      - name: Install dependencies
+#        run: flutter pub get
 
 #      - name: Check Flutter doctor
 #        run: flutter doctor -v
 
-#      - name: Build app
-#        run: flutter build web
-#
-#      - name: Set up AWS CLI
-#        uses: aws-actions/aws-cli-action@v1
-#
-#      - name: Print environment variables
-#        run: |
-#          echo "AWS_REGION=$AWS_REGION"
-#          echo "S3_BUCKET_NAME=$S3_BUCKET_NAME"
-#
-#      - name: Deploy to S3
-#        run: |
-#          aws s3 sync build/web s3://$S3_BUCKET_NAME --region $AWS_REGION --delete
-#        env:
-#          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-#          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-#          AWS_REGION: ${{ secrets.AWS_REGION }}
-#          S3_BUCKET_NAME: ${{ secrets.S3_BUCKET_NAME }}
+      - name: Build app
+        run: flutter build web
+
+      - name: Set up AWS CLI
+        uses: aws-actions/aws-cli-action@v1
+
+      - name: Print environment variables
+        run: |
+          echo "AWS_REGION=$AWS_REGION"
+          echo "S3_BUCKET_NAME=$S3_BUCKET_NAME"
+
+      - name: Deploy to S3
+        run: |
+          aws s3 sync build/web s3://$S3_BUCKET_NAME --region $AWS_REGION --delete
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: ${{ secrets.AWS_REGION }}
+          S3_BUCKET_NAME: ${{ secrets.S3_BUCKET_NAME }}
